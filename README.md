@@ -1,6 +1,6 @@
-# Ani+ Seguros
+# <p align="center">Ani+ Seguros</p>
 
-**Projeto para desenvolvimento de um aplicativo dedicado a denúncias de maus-tratos contra animais, conectando usuários a organizações protetoras de forma eficiente e segura.**
+<p align="center">**Projeto para desenvolvimento de um aplicativo dedicado a denúncias de maus-tratos contra animais, conectando usuários a organizações protetoras de forma eficiente e segura.**</p>
 
 ## 📖 Introdução
 
@@ -24,15 +24,15 @@ Além do sistema de denúncias, o app conta com funcionalidades que ajudam a con
 
 ## 🎨 Protótipo
 
-[🔗 Veja no Figma](https://www.figma.com/design/xcWZ9gXfMdnhKTYcsMzMXN/Projeto-Ani%2B-Seguros-(Copy)?node-id=0-1&p=f&t=xTJ7grvkMuG4Mbkv-0)
+[🔗 Veja no Figma](https://www.figma.com/file/2u8viKkqxSZaaJTj0XdkxG/Apresenta%C3%A7%C3%A3o-PMI---Jiic?node-id=0%3A1)
 
 *(Imagens do protótipo serão adicionadas em breve! 📷✨)*
 
 ## 💡 Equipe
 
 - **Luís Bolina Martins**  
-- **João Vitor**  
-- **João Pedro Bastos**  
+- **João...**  
+- **João...**  
 
 ---
 
