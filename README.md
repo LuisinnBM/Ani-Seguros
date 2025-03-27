@@ -31,7 +31,9 @@
 
 ## 🎨 Protótipo
 
-[🔗 Veja no Figma](https://www.figma.com/design/xcWZ9gXfMdnhKTYcsMzMXN/Projeto-Ani%2B-Seguros?node-id=0-1&p=f&t=yo7i2K7jSR1Rngj3-0)
+<p align="center">
+<a href="https://www.figma.com/design/xcWZ9gXfMdnhKTYcsMzMXN/Projeto-Ani%2B-Seguros?node-id=0-1&p=f&t=yo7i2K7jSR1Rngj3-0">🔗 Veja Completo no Figma</a>
+</p>
 
 <div align="center">
   <img src="src/screens/Entrada 1.png" alt="Logo Ani+ Seguros" width="150" style="display: inline-block; margin: 0 10px;">
