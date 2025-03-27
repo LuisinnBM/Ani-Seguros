@@ -32,6 +32,14 @@
 ## 🎨 Protótipo
 
 [🔗 Veja no Figma](https://www.figma.com/design/xcWZ9gXfMdnhKTYcsMzMXN/Projeto-Ani%2B-Seguros?node-id=0-1&p=f&t=yo7i2K7jSR1Rngj3-0)
+
+<div align="center">
+  <img src="src/screens/Entrada 1.png" alt="Logo Ani+ Seguros" width="150" style="display: inline-block; margin: 0 10px;">
+  <img src="src/screens/Menu Inicial.png" alt="Logo Ani+ Seguros" width="150" style="display: inline-block; margin: 0 10px;">
+  <img src="src/screens/Login Usuário.png" alt="Logo Ani+ Seguros" width="150" style="display: inline-block; margin: 0 10px;">
+  <img src="src/screens/Menu Usuário.png" alt="Logo Ani+ Seguros" width="150" style="display: inline-block; margin: 0 10px;">
+  <img src="src/screens/Denúncia 3.png" alt="Logo Ani+ Seguros" width="150" style="display: inline-block; margin: 0 10px;">
+</div>
 <br>
 
 ## 🛠️ Tecnologias Utilizadas
