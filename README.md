@@ -1,4 +1,9 @@
-<img src= C:\Users\Acer\Documents\Workspace\Ani-Seguros\src\images\Logo.png alt="Logo do Projeto Ani+ Seguros"></img>
+<div align="center">
+  <img src="src/images/Logo.png" alt="Logo Ani+ Seguros" width="300">
+</div>
+
+  
+</p>
 
 # <p align="center">Ani+ Seguros</p>
 
