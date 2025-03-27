@@ -10,7 +10,7 @@
 <p align="center"><strong>Projeto para desenvolvimento de um aplicativo dedicado a denúncias de maus-tratos contra animais, conectando usuários a organizações protetoras de forma eficiente e segura.</strong></p>
 
 <p align="center">
-<a href="https://luisinnbm.github.io/Projeto-Ani-Seguros/">🔗 Site do Projeto</a>
+<a href="https://luisinnbm.github.io/Projeto-Ani-Seguros/">🔗 Landpage do Projeto</a>
 </p>
 
 <br>
