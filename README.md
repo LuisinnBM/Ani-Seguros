@@ -32,12 +32,12 @@
 
 *(Imagens do protótipo em breve! ✨)*
 
+---
+
 ## 💡 Nome dos Integrantes
 
 - **Luís Bolina Martins**  
 - **João Vitor**  
 - **João Pedro Bastos**  
 
----
-
-_Made with ❤️ by **[LuisinnBM](https://github.com/LuisinnBM)** 👋_
+_Made with 🤍 by **[LuisinnBM](https://github.com/LuisinnBM)**_
