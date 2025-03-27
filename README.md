@@ -1,6 +1,6 @@
 # <p align="center">Ani+ Seguros</p>
 
-<p align="center">**Projeto para desenvolvimento de um aplicativo dedicado a denúncias de maus-tratos contra animais, conectando usuários a organizações protetoras de forma eficiente e segura.**</p>
+<p align="center"><strong>Projeto para desenvolvimento de um aplicativo dedicado a denúncias de maus-tratos contra animais, conectando usuários a organizações protetoras de forma eficiente e segura.</strong></p>
 
 ## 📖 Introdução
 
