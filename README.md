@@ -31,7 +31,7 @@
 
 ## 🎨 Protótipo
 
-[🔗 Veja no Figma](https://www.figma.com/file/2u8viKkqxSZaaJTj0XdkxG/Apresenta%C3%A7%C3%A3o-PMI---Jiic?node-id=0%3A1)
+[🔗 Veja no Figma](https://www.figma.com/design/xcWZ9gXfMdnhKTYcsMzMXN/Projeto-Ani%2B-Seguros?node-id=0-1&p=f&t=yo7i2K7jSR1Rngj3-0)
 <br>
 
 ## 🛠️ Tecnologias Utilizadas
