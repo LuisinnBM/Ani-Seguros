@@ -8,6 +8,11 @@
 # <p align="center">Ani+ Seguros</p>
 
 <p align="center"><strong>Projeto para desenvolvimento de um aplicativo dedicado a denúncias de maus-tratos contra animais, conectando usuários a organizações protetoras de forma eficiente e segura.</strong></p>
+
+<p align="center">
+<a href="https://luisinnbm.github.io/Projeto-Ani-Seguros/">🔗 Site do Projeto</a>
+</p>
+
 <br>
 
 ## 📖 Introdução
@@ -31,10 +36,6 @@
 
 ## 🎨 Protótipo
 
-<p align="center">
-<a href="https://www.figma.com/design/xcWZ9gXfMdnhKTYcsMzMXN/Projeto-Ani%2B-Seguros?node-id=0-1&p=f&t=yo7i2K7jSR1Rngj3-0">🔗 Veja Completo no Figma</a>
-</p>
-
 <div align="center">
   <img src="src/screens/Entrada 1.png" alt="Logo Ani+ Seguros" width="150" style="display: inline-block; margin: 0 10px;">
   <img src="src/screens/Menu Inicial.png" alt="Logo Ani+ Seguros" width="150" style="display: inline-block; margin: 0 10px;">
@@ -42,6 +43,11 @@
   <img src="src/screens/Menu Usuário.png" alt="Logo Ani+ Seguros" width="150" style="display: inline-block; margin: 0 10px;">
   <img src="src/screens/Denúncia 3.png" alt="Logo Ani+ Seguros" width="150" style="display: inline-block; margin: 0 10px;">
 </div>
+
+<p align="center">
+<a href="https://www.figma.com/design/xcWZ9gXfMdnhKTYcsMzMXN/Projeto-Ani%2B-Seguros?node-id=0-1&p=f&t=yo7i2K7jSR1Rngj3-0">🔗 Veja Completo no Figma</a>
+</p>
+
 <br>
 
 ## 🛠️ Tecnologias Utilizadas
