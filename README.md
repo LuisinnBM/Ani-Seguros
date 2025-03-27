@@ -1,3 +1,5 @@
+<img src= C:\Users\Acer\Documents\Workspace\Ani-Seguros\src\images\Logo.png alt="Logo do Projeto Ani+ Seguros"></img>
+
 # <p align="center">Ani+ Seguros</p>
 
 <p align="center"><strong>Projeto para desenvolvimento de um aplicativo dedicado a denúncias de maus-tratos contra animais, conectando usuários a organizações protetoras de forma eficiente e segura.</strong></p>
