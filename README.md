@@ -103,7 +103,7 @@
 - *João Vitor Corrêa*
 - *João Pedro de Aguiar Bastos*
 - *Luís Bolina Martins*
-- *Nome do Quarto Integrante*
+- *Rafael Gonçalves Filho*
 <br>
 
 <p align="center">
