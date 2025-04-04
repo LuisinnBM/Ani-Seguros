@@ -49,7 +49,7 @@
 <br>
 
 <p align="center">
-   <a href="https://www.figma.com/design/xcWZ9gXfMdnhKTYcsMzMXN/Projeto-Ani%2B-Seguros?node-id=0-1&p=f&t=yo7i2K7jSR1Rngj3-0" target="_blank">
+   <a href="https://www.figma.com/design/xcWZ9gXfMdnhKTYcsMzMXN/Projeto-Ani--Seguros?node-id=0-1&p=f&t=AFq1tuIT61HOea00-0" target="_blank">
      <img src="https://img.shields.io/badge/Veja%20o%20Protótipo-Ani%2B%20Seguros-%237DB283?style=for-the-badge&logo=figma&logoColor=white" alt="Veja o Protótipo">
    </a>
 </p>
