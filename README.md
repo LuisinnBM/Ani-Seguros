@@ -71,7 +71,7 @@
   <strong>🔍 Planejamento e Organização</strong>
 </h3>
 <p align="center">
-   <a href="https://www.mindmeister.com" target="_blank">
+   <a href="https://mm.tt/app/map/3411352262?t=e8NVB0MDEa" target="_blank">
      <img src="https://img.shields.io/badge/MindMeister-0093D9?style=for-the-badge&logo=mindmeister&logoColor=white" alt="MindMeister">
    </a>
    <a href="https://trello.com" target="_blank">
@@ -83,10 +83,10 @@
   <strong>🖥️ Desenvolvimento Front-end</strong>
 </h3>
 <p align="center">
-   <a href="https://developer.mozilla.org/en-US/docs/Web/HTML" target="_blank">
+   <a href="https://luisinnbm.github.io/Ani-Seguros/" target="_blank">
      <img src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white" alt="HTML5">
    </a>
-   <a href="https://developer.mozilla.org/en-US/docs/Web/CSS" target="_blank">
+   <a href="https://luisinnbm.github.io/Ani-Seguros/" target="_blank">
      <img src="https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white" alt="CSS3">
    </a>
 </p>
