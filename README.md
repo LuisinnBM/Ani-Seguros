@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="src/images/Logo.png" alt="Logo Ani+ Seguros" width="300">
+  <img src="src/images/logo.png" alt="Logo Ani+ Seguros" width="300">
 </div>
 
   
