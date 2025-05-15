@@ -37,25 +37,6 @@
 - ✔ **Material educativo** – Acesso a conteúdos sobre direitos dos animais e como agir em casos de maus-tratos.  
 <br>
 
-## 🎨 Protótipo
-
-<div align="center">
-  <img src="src/screens/Entrada 1.png" alt="Logo Ani+ Seguros" width="150" style="display: inline-block; margin: 0 10px;">
-  <img src="src/screens/Menu Inicial.png" alt="Logo Ani+ Seguros" width="150" style="display: inline-block; margin: 0 10px;">
-  <img src="src/screens/Login Usuário.png" alt="Logo Ani+ Seguros" width="150" style="display: inline-block; margin: 0 10px;">
-  <img src="src/screens/Menu Usuário.png" alt="Logo Ani+ Seguros" width="150" style="display: inline-block; margin: 0 10px;">
-  <img src="src/screens/Denúncia 3.png" alt="Logo Ani+ Seguros" width="150" style="display: inline-block; margin: 0 10px;">
-</div>
-<br>
-
-<p align="center">
-   <a href="https://www.figma.com/design/xcWZ9gXfMdnhKTYcsMzMXN/Projeto-Ani--Seguros?node-id=0-1&p=f&t=AFq1tuIT61HOea00-0" target="_blank">
-     <img src="https://img.shields.io/badge/Veja%20o%20Protótipo-Ani%2B%20Seguros-%237DB283?style=for-the-badge&logo=figma&logoColor=white" alt="Veja o Protótipo">
-   </a>
-</p>
-
-<br>
-
 ## 🛠️ Recursos e Tecnologias Utilizadas
 
 <h3 align="center">
@@ -80,7 +61,7 @@
 </p>
 
 <h3 align="center">
-  <strong>🖥️ Desenvolvimento Front-end</strong>
+  <strong>🖥️ Desenvolvimento Front-End</strong>
 </h3>
 <p align="center">
    <a href="https://luisinnbm.github.io/Ani-Seguros/" target="_blank">
@@ -90,11 +71,40 @@
      <img src="https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white" alt="CSS3">
    </a>
 </p>
-<br>
+
+<h3 align="center">
+  <strong>⚙️ Desenvolvimento Back-End</strong>
+</h3>
 <p align="center">
-  <i>(A definir outras tecnologias para o back-end e banco de dados)</i>
+  <i>(A definir tecnologia para o back-end)</i>
 </p>
 
+<h3 align="center">
+  <strong>💾 Banco de Dados</strong>
+</h3>
+<p align="center">
+  <i>(A definir tecnologia para o banco de dados)</i>
+</p>
+<br>
+
+## 🎨 Protótipo
+
+<div align="center">
+  <img src="src/screens/Entrada 1.png" alt="Logo Ani+ Seguros" width="150" style="display: inline-block; margin: 0 10px;">
+  <img src="src/screens/Menu Inicial.png" alt="Logo Ani+ Seguros" width="150" style="display: inline-block; margin: 0 10px;">
+  <img src="src/screens/Login Usuário.png" alt="Logo Ani+ Seguros" width="150" style="display: inline-block; margin: 0 10px;">
+  <img src="src/screens/Menu Usuário.png" alt="Logo Ani+ Seguros" width="150" style="display: inline-block; margin: 0 10px;">
+  <img src="src/screens/Denúncia 3.png" alt="Logo Ani+ Seguros" width="150" style="display: inline-block; margin: 0 10px;">
+</div>
+<br>
+
+<p align="center">
+   <a href="https://www.figma.com/design/xcWZ9gXfMdnhKTYcsMzMXN/Projeto-Ani--Seguros?node-id=0-1&p=f&t=AFq1tuIT61HOea00-0" target="_blank">
+     <img src="https://img.shields.io/badge/Veja%20o%20Protótipo-Ani%2B%20Seguros-%237DB283?style=for-the-badge&logo=figma&logoColor=white" alt="Veja o Protótipo">
+   </a>
+</p>
+
+<br>
 
 ---
 
