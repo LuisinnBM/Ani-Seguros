@@ -110,6 +110,7 @@
 
 ## 💡 Nome dos Integrantes
 
+- *Guilherme Gomes Moreno*
 - *João Vitor Corrêa*
 - *João Pedro de Aguiar Bastos*
 - *Luís Bolina Martins*
