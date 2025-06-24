@@ -8,55 +8,38 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header class="cabecalho">
-        <a class="cabecalho__logo" href="index.html">
-            <img src="src/images/logo.png" alt="Logo do Ani+Seguros" class="cabecalho__logo__imagem">
-            <span class="cabecalho__logo__texto">Ani <span class="titulo__mais">+</span> Seguros</span>
-        </a>
-        <nav class="cabecalho__menu">
-            <a href="index.html" class="cabecalho__menu__link">Início</a>
-            <a href="about.html" class="cabecalho__menu__link">Sobre</a>
-            <a href="material.html" class="cabecalho__menu__link">Material</a>
-            <a href="login.html" class="cabecalho__menu__botao"> <img class="cabecalho__menu__botao__imagem" src="src/images/download-branco.png" alt="Icon Download"> Denúncia</a>
-        </nav>
-    </header>
 
     <main class="login-cadastro">
-    <div class="login-cadastro__container">
-        <h1 class="login-cadastro__titulo">Login</h1>
+        <div class="login-cadastro__container">
 
-        <div class="login-cadastro__toggle">
-            <button type="button" class="login-cadastro__toggle-btn ativo">Usuário</button>
-            <button type="button" class="login-cadastro__toggle-btn">Autoridade</button>
+            <!-- Lado Esquerdo - Ilustração -->
+            <div class="login-cadastro__ilustracao">
+                <div>
+                    <img src="src/images/logo.png" alt="Ilustração Login" style="max-width: 100%; height: auto;">
+                </div>
+            </div>
+
+            <!-- Lado Direito - Formulário -->
+            <div class="login-cadastro__conteudo">
+                <h1 class="login-cadastro__titulo">Login</h1>
+                <p class="login-cadastro__subtitulo">Bem-vindo(a) de volta ao Ani+ Seguros!</p>
+
+                <div class="login-cadastro__toggle">
+                    <button type="button" class="login-cadastro__toggle-btn ativo">Usuário</button>
+                    <button type="button" class="login-cadastro__toggle-btn">Autoridade</button>
+                </div>
+
+                <form class="login-cadastro__form">
+                    <input type="email" placeholder="Digite seu e-mail" class="login-cadastro__input" required>
+                    <input type="password" placeholder="Digite sua senha" class="login-cadastro__input" required>
+                    <button type="submit" class="login-cadastro__botao">Entrar</button>
+                </form>
+
+                <p class="login-cadastro__link">
+                    Não tem uma conta? <a href="cadastro.html">Cadastre-se</a>
+                </p>
+            </div>
         </div>
-
-        <form class="login-cadastro__form">
-            <input type="email" placeholder="E-mail" class="login-cadastro__input" required>
-            <input type="password" placeholder="Senha" class="login-cadastro__input" required>
-            <button type="submit" class="login-cadastro__botao">Entrar</button>
-        </form>
-
-        <p class="login-cadastro__link">Não tem uma conta? <a href="cadastro.html">Cadastre-se</a></p>
-    </div>
-</main>
-
-
-    <footer class="rodape">
-        <div class="bloco-icones">
-          <a target="_blank" href="#" title="Download">
-            <img src="src/images/donwload.png" alt="Ícone de Download">
-          </a>
-          <a target="_blank" href="https://github.com/LuisinnBM/Ani-Seguros" title="GitHub">
-            <img src="src/images/github.png" alt="Ícone do GitHub">
-          </a>
-          <a target="_blank" href="https://www.figma.com/design/xcWZ9gXfMdnhKTYcsMzMXN/Projeto-Ani--Seguros?node-id=0-1&p=f&t=AFq1tuIT61HOea00-0" title="Figma">
-            <img src="src/images/figma.png" alt="Ícone do Figma">
-          </a>
-        </div>
-        <div class="bloco-texto">
-          <p>Todos os Direitos Reservados a Ani + Seguros 2024 ©</p>
-        </div>
-      </footer>
-
+    </main>
 </body>
 </html>
