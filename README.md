@@ -124,10 +124,12 @@ Acesso a conteúdos educativos e informações sobre as **leis de proteção ani
 
 ## 💡 Integrantes do Projeto
 
+- *Guilherme Gomes Moreno*
 - *João Vitor Corrêa*
 - *João Pedro de Aguiar Bastos*
 - *Luís Bolina Martins*
 - *Rafael Gonçalves Filho*
+  
 <br>
 
 <p align="center">
