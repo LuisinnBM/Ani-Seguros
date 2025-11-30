@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Histórico de Denúncias - Ani-Seguros</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .historico-container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 0 20px;
+        }
+
+        .historico-titulo {
+            color: #2c3e50;
+            margin-bottom: 30px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #7DB283;
+        }
+
+        .filtros {
+            margin-bottom: 20px;
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .filtro-select {
+            padding: 8px 12px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            background: white;
+            min-width: 150px;
+        }
+
+        .denuncia-card {
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            border-left: 4px solid #7DB283;
+        }
+
+        .denuncia-card.concluida {
+            border-left-color: #27ae60;
+        }
+
+        .denuncia-card.arquivada {
+            border-left-color: #95a5a6;
+        }
+
+        .denuncia-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .denuncia-protocolo {
+            font-weight: bold;
+            color: #2c3e50;
+        }
+
+        .denuncia-data {
+            color: #7f8c8d;
+            font-size: 0.9em;
+        }
+
+        .denuncia-info {
+            margin-bottom: 15px;
+        }
+
+        .denuncia-info p {
+            margin: 5px 0;
+            color: #34495e;
+        }
+
+        .denuncia-status {
+            display: inline-block;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.9em;
+            color: white;
+            background: #7DB283;
+        }
+
+        .denuncia-status.concluida {
+            background: #27ae60;
+        }
+
+        .denuncia-status.arquivada {
+            background: #95a5a6;
+        }
+
+        .voltar-btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background: #7DB283;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            margin-bottom: 20px;
+            transition: background 0.3s ease;
+        }
+
+        .voltar-btn:hover {
+            background: #659c6b;
+        }
+
+        @media (max-width: 768px) {
+            .filtros {
+                flex-direction: column;
+            }
+
+            .filtro-select {
+                width: 100%;
+            }
+
+            .denuncia-header {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="historico-container">
+        <a href="autoridade-dashboard.html" class="voltar-btn">← Voltar ao Dashboard</a>
+        
+        <h1 class="historico-titulo">Histórico de Denúncias</h1>
+
+        <div class="filtros">
+            <select class="filtro-select" id="filtroStatus">
+                <option value="">Todos os Status</option>
+                <option value="CONCLUIDA">Concluídas</option>
+                <option value="ARQUIVADA">Arquivadas</option>
+            </select>
+
+            <select class="filtro-select" id="filtroPeriodo">
+                <option value="">Todo Período</option>
+                <option value="7">Últimos 7 dias</option>
+                <option value="30">Últimos 30 dias</option>
+                <option value="90">Últimos 90 dias</option>
+            </select>
+        </div>
+
+        <div id="denunciasContainer">
+            <!-- As denúncias serão carregadas aqui via JavaScript -->
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', async () => {
+            const denunciasContainer = document.getElementById('denunciasContainer');
+            const filtroStatus = document.getElementById('filtroStatus');
+            const filtroPeriodo = document.getElementById('filtroPeriodo');
+
+            let currentUserId = null;
+
+            // Obter ID do usuário atual (autoridade)
+            async function getCurrentUser() {
+                try {
+                    const response = await fetch('/api/me');
+                    if (!response.ok) {
+                        window.location.href = 'login.html';
+                        return;
+                    }
+                    const data = await response.json();
+                    return data.user.id;
+                } catch (error) {
+                    console.error('Erro ao obter usuário:', error);
+                    window.location.href = 'login.html';
+                }
+            }
+
+            async function loadDenuncias() {
+                try {
+                    const response = await fetch('/api/reports');
+                    if (!response.ok) {
+                        throw new Error('Erro ao carregar denúncias');
+                    }
+
+                    const data = await response.json();
+                    
+                    // Filtrar APENAS as denúncias atribuídas ao perfil de autoridade atual
+                    return (data.reports || []).filter(report => 
+                        report.autoridade && report.autoridade.id === currentUserId
+                    );
+                } catch (error) {
+                    console.error('Erro:', error);
+                    alert('Erro ao carregar denúncias');
+                    return [];
+                }
+            }
+
+            function formatDate(dateString) {
+                return new Date(dateString).toLocaleDateString('pt-BR', {
+                    day: '2-digit',
+                    month: '2-digit',
+                    year: 'numeric',
+                    hour: '2-digit',
+                    minute: '2-digit'
+                });
+            }
+
+            function formatTipo(tipo) {
+                const tipos = {
+                    violencia_fisica: 'Violência Física',
+                    negligencia: 'Negligência',
+                    abandono: 'Abandono',
+                    maus_tratos: 'Maus-tratos',
+                    comercio_ilegal: 'Comércio Ilegal',
+                    outro: 'Outros'
+                };
+                return tipos[tipo] || tipo;
+            }
+
+            function renderDenuncias(denuncias) {
+                if (!denuncias.length) {
+                    denunciasContainer.innerHTML = '<p>Nenhuma denúncia atribuída a você.</p>';
+                    return;
+                }
+
+                denunciasContainer.innerHTML = denuncias.map(denuncia => `
+                    <div class="denuncia-card ${denuncia.status.toLowerCase()}">
+                        <div class="denuncia-header">
+                            <span class="denuncia-protocolo">${denuncia.protocolo}</span>
+                            <span class="denuncia-data">${formatDate(denuncia.concludedAt || denuncia.createdAt)}</span>
+                        </div>
+                        <div class="denuncia-info">
+                            <p><strong>Tipo:</strong> ${formatTipo(denuncia.tipo)}</p>
+                            <p><strong>Local:</strong> ${denuncia.endereco}, ${denuncia.bairro}</p>
+                            <p><strong>Denunciante:</strong> ${denuncia.denuncianteNome || 'Anônimo'}</p>
+                            <p><strong>Status:</strong> <span class="denuncia-status ${denuncia.status.toLowerCase()}">${denuncia.status}</span></p>
+                        </div>
+                        ${denuncia.descricao ? `<p><strong>Descrição:</strong> ${denuncia.descricao}</p>` : ''}
+                    </div>
+                `).join('');
+            }
+
+            function filterDenuncias(denuncias) {
+                let filtered = [...denuncias];
+
+                const statusFiltro = filtroStatus.value;
+                if (statusFiltro) {
+                    filtered = filtered.filter(d => d.status === statusFiltro);
+                }
+
+                const dias = parseInt(filtroPeriodo.value);
+                if (dias) {
+                    const dataLimite = new Date();
+                    dataLimite.setDate(dataLimite.getDate() - dias);
+                    filtered = filtered.filter(d => new Date(d.concludedAt || d.createdAt) >= dataLimite);
+                }
+
+                return filtered;
+            }
+
+            // Obter usuário atual e carregar denúncias
+            currentUserId = await getCurrentUser();
+            if (!currentUserId) return;
+
+            const denuncias = await loadDenuncias();
+            renderDenuncias(filterDenuncias(denuncias));
+
+            // Adicionar eventos de filtro
+            filtroStatus.addEventListener('change', () => {
+                renderDenuncias(filterDenuncias(denuncias));
+            });
+
+            filtroPeriodo.addEventListener('change', () => {
+                renderDenuncias(filterDenuncias(denuncias));
+            });
+        });
+    </script>
+</body>
+</html>

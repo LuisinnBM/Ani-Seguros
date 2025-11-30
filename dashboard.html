@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ani+Seguros | Dashboard</title>
+  <link rel="icon" href="src/images/logo.ico" type="image/x-icon">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="dashboard.css">
+  <link rel="stylesheet" href="denuncia-progresso.css">
+</head>
+<body>
+  <!-- Cabeçalho fixo -->
+  <header class="cabecalho">
+    <a class="cabecalho__logo" href="dashboard.html">
+      <img src="src/images/logo.png" alt="Logo do Ani+Seguros" class="cabecalho__logo__imagem">
+      <span class="cabecalho__logo__texto">Ani <span class="titulo__mais">+</span> Seguros</span>
+    </a>
+    <nav class="cabecalho__menu">
+      <a href="dashboard.html" class="cabecalho__menu__link ativo">Dashboard</a>
+      <a href="nova-denuncia.html" class="cabecalho__menu__link">Denunciar</a>
+      <a href="minhas-denuncias.html" class="cabecalho__menu__link">Minhas Denúncias</a>
+      <a href="#" class="cabecalho__menu__botao" id="logoutBtn">Sair</a>
+    </nav>
+  </header>
+
+  <!-- Hero do dashboard -->
+  <section class="hero hero--dashboard">
+    <div class="hero__conteudo">
+      <h1 class="hero__titulo">Olá, Usuário!</h1>
+      <p class="hero__subtitulo">Acompanhe e gerencie suas denúncias com praticidade e segurança</p>
+      <div class="hero__botoes">
+        <a href="nova-denuncia.html" class="hero__botao1">Nova Denúncia</a>
+        <a href="minhas-denuncias.html" class="hero__botao2">Ver Minhas Denúncias</a>
+      </div>
+    </div>
+  </section>
+
+  <main class="dashboard">
+  <!-- Bloco principal dividido em 2 colunas -->
+  <section class="dashboard__conteudo">
+    
+    <!-- Coluna esquerda - Atualizações -->
+    <div class="dashboard__coluna">
+      <h2>Últimas Atualizações</h2>
+      <ul class="atualizacoes__lista">
+        <li class="atualizacao__item">
+          <img src="src/images/icon-analise.png" alt="Ícone análise" class="atualizacao__icone">
+          <div class="atualizacao__conteudo">
+            <h3>Sua Denúncia foi Atualizada</h3>
+            <p>Denúncia <span class="destaque">#0155</span> agora está <em>Em análise</em>.</p>
+          </div>
+          <span class="atualizacao__data">Hoje, 14:25</span>
+        </li>
+
+        <li class="atualizacao__item">
+          <img src="src/images/icon-concluida.png" alt="Ícone concluída" class="atualizacao__icone">
+          <div class="atualizacao__conteudo">
+            <h3>Sua Denúncia foi Concluída</h3>
+            <p>Denúncia <span class="destaque">#0123</span> agora está <em>Concluída</em>.</p>
+          </div>
+          <span class="atualizacao__data">Ontem, 18:42</span>
+        </li>
+
+        <li class="atualizacao__item">
+          <img src="src/images/icon-feedback.png" alt="Ícone feedback" class="atualizacao__icone">
+          <div class="atualizacao__conteudo">
+            <h3>Feedback Importante</h3>
+            <p>Sua opinião importa! Avalie e nos ajude a melhorar.</p>
+          </div>
+          <span class="atualizacao__data">09/11, 12:15</span>
+        </li>
+
+        <li class="atualizacao__item">
+          <img src="src/images/icon-parceria.png" alt="Ícone parceria" class="atualizacao__icone">
+          <div class="atualizacao__conteudo">
+            <h3>Nova Parceria para Resgate</h3>
+            <p>Ani+ Seguros firmou parceria com a ONG Exemplo.</p>
+          </div>
+          <span class="atualizacao__data">06/11, 09:50</span>
+        </li>
+      </ul>
+      <!-- Container dinâmico para denúncias do usuário -->
+      <div id="meu-relatorio-container" style="margin-top:1.5rem">
+        <h3>Minhas Denúncias</h3>
+        <div id="meus-relatorios"></div>
+      </div>
+    </div>
+
+
+    <!-- Coluna direita - Leis Regionais -->
+    <div class="dashboard__coluna">
+      <h2>Leis Regionais</h2>
+      <div class="leis__lista">
+          <a href="lei9643-2014.html" class="lei__item">
+            <div class="lei__info">
+              <h3>Lei Municipal nº 9.643/2014</h3>
+              <p>Proíbe maus-tratos e crueldade contra animais em Florianópolis.</p>
+            </div>
+          </a>
+
+          <a href="pl19337-2024.html" class="lei__item">
+            <div class="lei__info">
+              <h3>Projeto de Lei nº 19337/2024</h3>
+              <p>Veda adoção de animais por pessoas condenadas por maus-tratos.</p>
+            </div>
+          </a>
+
+          <a href="lc1927-2023.html" class="lei__item">
+            <div class="lei__info">
+              <h3>Lei Complementar nº 1927/2023</h3>
+              <p>Define e regulamenta protetores, acolhedores e lares de apoio.</p>
+            </div>
+          </a>
+
+          <a href="lei19315-2025.html" class="lei__item">
+            <div class="lei__info">
+              <h3>Lei Estadual nº 19.315/2025</h3>
+              <p>Responsabiliza autores de maus-tratos por despesas e perda da guarda.</p>
+            </div>
+          </a>
+
+          <a href="lei18692-2023.html" class="lei__item">
+            <div class="lei__info">
+              <h3>Lei Estadual nº 18.692/2023</h3>
+              <p>Impede devolução de animais apreendidos em casos de maus-tratos.</p>
+            </div>
+          </a>
+      </div>
+    </div>
+  </section>
+</main>
+
+  <footer class="rodape">
+    <div class="bloco-texto">
+      <p>Todos os Direitos Reservados a Ani + Seguros 2024 ©</p>
+    </div>
+  </footer>
+  <script src="auth.js"></script>
+  <script src="statusConstantes.js"></script>
+  <script src="dashboard.js"></script>
+</body>
+</html>

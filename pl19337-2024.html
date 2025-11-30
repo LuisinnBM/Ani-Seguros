@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Projeto de Lei nº 19337/2024 | Ani+Seguros</title>
+  <link rel="icon" href="src/images/logo.ico" type="image/x-icon">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="dashboard.css">
+  <style>
+    .lei-container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 100px 20px 40px 20px;
+      background: white;
+      border-radius: 8px;
+      margin-top: 20px;
+    }
+    
+    .lei-header {
+      text-align: center;
+      margin-bottom: 40px;
+      padding-bottom: 20px;
+      border-bottom: 3px solid #7DB283;
+    }
+    
+    .lei-header h1 {
+      color: #2c3e50;
+      font-size: 28px;
+      margin-bottom: 10px;
+    }
+    
+    .lei-numero {
+      color: #7f8c8d;
+      font-size: 14px;
+      font-weight: bold;
+    }
+    
+    .lei-content {
+      line-height: 1.8;
+      color: #34495e;
+      font-size: 16px;
+    }
+    
+    .lei-content h2 {
+      color: #2c3e50;
+      margin-top: 30px;
+      margin-bottom: 15px;
+      border-left: 4px solid #7DB283;
+      padding-left: 15px;
+    }
+    
+    .lei-content h3 {
+      color: #34495e;
+      margin-top: 20px;
+      margin-bottom: 10px;
+    }
+    
+    .lei-content p {
+      margin-bottom: 15px;
+    }
+    
+    .lei-content ul {
+      margin: 15px 0 15px 30px;
+    }
+    
+    .lei-content li {
+      margin-bottom: 10px;
+    }
+    
+    .voltar-btn {
+      display: inline-block;
+      margin-top: 30px;
+      padding: 12px 24px;
+      background: #7DB283;
+      color: white;
+      text-decoration: none;
+      border-radius: 6px;
+      transition: background 0.3s;
+    }
+    
+    .voltar-btn:hover {
+      background: #659c6b;
+    }
+  </style>
+</head>
+<body>
+  <header class="cabecalho">
+    <a class="cabecalho__logo" href="dashboard.html">
+      <img src="src/images/logo.png" alt="Logo do Ani+Seguros" class="cabecalho__logo__imagem">
+      <span class="cabecalho__logo__texto">Ani <span class="titulo__mais">+</span> Seguros</span>
+    </a>
+    <nav class="cabecalho__menu">
+      <a href="dashboard.html" class="cabecalho__menu__link">Dashboard</a>
+      <a href="nova-denuncia.html" class="cabecalho__menu__link">Denunciar</a>
+      <a href="dashboard.html#minhas-denuncias" class="cabecalho__menu__link">Minhas Denúncias</a>
+      <a href="#" class="cabecalho__menu__botao" id="logoutBtn">Sair</a>
+    </nav>
+  </header>
+
+  <main class="lei-container">
+    <div class="lei-header">
+      <h1>Projeto de Lei nº 19337/2024</h1>
+      <p class="lei-numero">Brasil - Câmara dos Deputados</p>
+    </div>
+
+    <div class="lei-content">
+      <h2>Sobre o Projeto</h2>
+      <p>
+        Este projeto de lei proíbe a adoção de animais por pessoas condenadas por crimes de maus-tratos 
+        animal. Busca prevenir que indivíduos com histórico de crueldade animal tenham acesso a novos animais, 
+        protegendo assim os animais de abandono futuro.
+      </p>
+
+      <h2>Objetivo Principal</h2>
+      <p>
+        Estabelecer que qualquer pessoa condenada por maus-tratos animal fica proibida de adotar, receber 
+        ou possuir animais domésticos por um período determinado pela lei, conforme estabelecido em 
+        sentença condenatória.
+      </p>
+
+      <h2>Disposições Principais</h2>
+      <h3>Proibição de Adoção</h3>
+      <p>
+        Pessoas com condenação comprovada por maus-tratos animal não poderão adotar animais em 
+        organizações de proteção animal, abrigos municipais ou através de processos de adoção regulamentados 
+        por lei.
+      </p>
+
+      <h3>Registro Nacional</h3>
+      <p>
+        As condenações por maus-tratos animal devem ser registradas em banco de dados nacional acessível 
+        aos órgãos responsáveis por adoções, garantindo o cumprimento desta proibição.
+      </p>
+
+      <h2>Exceções</h2>
+      <ul>
+        <li>Animais de trabalho ou de serviço (sob supervisão especial)</li>
+        <li>Animais utilizados em atividades legalmente permitidas sob supervisão governamental</li>
+      </ul>
+
+      <h2>Importância desta Lei</h2>
+      <p>
+        Este projeto é crucial para garantir a segurança e bem-estar animal, reduzindo a reincidência de 
+        maus-tratos e prevenindo que pessoas com histórico de crueldade tenham nova oportunidade de ferir 
+        animais indefesos.
+      </p>
+
+      <a href="dashboard.html" class="voltar-btn">← Voltar ao Dashboard</a>
+    </div>
+  </main>
+
+  <footer class="rodape">
+    <div class="bloco-texto">
+      <p>Todos os Direitos Reservados a Ani + Seguros 2024 ©</p>
+    </div>
+  </footer>
+
+  <script src="auth.js"></script>
+</body>
+</html>

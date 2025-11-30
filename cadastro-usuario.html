@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cadastro Usuário - Ani+Seguros</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="cabecalho">
+    <a class="cabecalho__logo" href="index.html">
+      <img src="src/images/logo.png" alt="Logo" class="cabecalho__logo__imagem">
+    </a>
+  </header>
+  <main class="login-cadastro">
+    <div class="login-cadastro__container">
+      <div class="login-cadastro__conteudo">
+        <h1 class="login-cadastro__titulo">Cadastro de Usuário</h1>
+        <form id="cadUsuarioForm" class="login-cadastro__form">
+          <input name="email" placeholder="Digite seu e-mail" class="login-cadastro__input" required>
+          <input name="password" type="password" placeholder="Digite sua senha" class="login-cadastro__input" required>
+          <input name="name" type="text" placeholder="Nome completo" class="login-cadastro__input">
+          <input name="cpf" type="text" placeholder="CPF (apenas números)" class="login-cadastro__input" required pattern="\d{11}" title="Digite apenas os 11 números do CPF">
+          <input name="phone" type="text" placeholder="Telefone com DDD" class="login-cadastro__input" required pattern="\d{10,11}" title="Digite o DDD e o número, apenas números">
+          <button type="submit" class="login-cadastro__botao">Cadastrar</button>
+        </form>
+        <p class="login-cadastro__link">Já tem conta? <a href="login.html">Entrar</a></p>
+      </div>
+    </div>
+  </main>
+  <script src="validacao.js"></script>
+  <script src="cadastro.js"></script>
+</body>
+</html>

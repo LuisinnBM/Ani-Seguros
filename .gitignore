@@ -1,0 +1,33 @@
+# Variáveis de ambiente (SEGREDO)
+.env
+.env.local
+.env.*.local
+
+# Node
+node_modules/
+npm-debug.log
+yarn-error.log
+package-lock.json
+yarn.lock
+
+# Backups
+*.bak
+*.backup
+data.json.bak
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Logs
+logs/
+*.log
+
+# Temporários
+tmp/
+temp/
+.tmp/

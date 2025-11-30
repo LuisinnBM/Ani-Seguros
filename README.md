@@ -135,3 +135,107 @@ Acesso a conteúdos educativos e informações sobre as **leis de proteção ani
 <p align="center">
   Made with 💚 by <strong><a href="https://github.com/LuisinnBM" target="_blank">LuisinnBM</a></strong>
 </p>
+
+---
+
+## Backend (desenvolvimento)
+
+O projeto agora inclui validações em Go integradas ao servidor Express. O sistema é composto por dois serviços:
+
+### 1. Serviço de Validação (Go)
+
+O serviço de validação em Go fornece validações robustas para:
+- Documentos (CPF, CNPJ)
+- Dados de contato (email, telefone)
+- Arquivos (extensões e tamanhos)
+- Denúncias (categorias, status, protocolos)
+
+### 2. Servidor Node.js
+
+O servidor Express fornece a API principal e integra com o serviço de validação para garantir a integridade dos dados.
+
+### Pré-requisitos
+
+1. Node.js v16 ou superior
+2. Go 1.19 ou superior
+3. NPM ou Yarn
+
+### Como executar
+
+1. **Preparar o ambiente Go**:
+```bash
+cd validation-service
+go mod download
+```
+
+2. **Instalar dependências Node.js**:
+```bash
+cd ..  # Voltar para a pasta raiz
+npm install
+```
+
+3. **Iniciar os serviços** (em terminais separados):
+
+Terminal 1 (Serviço Go):
+```bash
+cd validation-service
+go run main.go
+```
+
+Terminal 2 (Servidor Node.js):
+```bash
+npm start
+```
+
+4. Acesse `http://localhost:3000` no navegador
+
+### Endpoints da API
+
+#### Validação (Go - porta 8080):
+```bash
+POST /validate
+Content-Type: application/json
+{
+    "type": "cpf|email|phone|protocol|category|status|file-extension|file-size",
+    "value": "valor a validar"
+}
+```
+
+#### API Principal (Node.js - porta 3000):
+- POST /api/register  { email, password, role?, cpf, phone }
+- POST /api/login     { email, password }
+- POST /api/reports   { endereco, bairro, tipo, arquivos }
+- GET  /api/reports   -> obtém denúncias (requer autenticação)
+
+### Exemplos de Uso
+
+1. **Registrar usuário**:
+```bash
+curl -X POST http://localhost:3000/api/register -H "Content-Type: application/json" -d '{
+    "email": "usuario@exemplo.com",
+    "password": "senha123",
+    "cpf": "123.456.789-09",
+    "phone": "11999999999"
+}'
+```
+
+2. **Criar denúncia**:
+```bash
+curl -X POST http://localhost:3000/api/reports -H "Content-Type: application/json" -d '{
+    "endereco": "Rua Exemplo, 123",
+    "bairro": "Centro",
+    "tipo": "maus_tratos",
+    "arquivos": [
+        {"name": "evidencia.jpg", "size": 5242880}
+    ]
+}'
+```
+
+### Notas Importantes
+
+- O armazenamento é feito em `data.json` (para desenvolvimento)
+- As validações são realizadas em tempo real pelo serviço Go
+- Suporte a arquivos: imagens até 10MB, vídeos até 50MB
+- Categorias de denúncia pré-definidas e validadas
+- Protocolos seguem o formato ANI-YYYYMMDD-XXXXX
+

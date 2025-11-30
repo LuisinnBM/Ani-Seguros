@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ani+Seguros | Minhas Denúncias</title>
+  <link rel="icon" href="src/images/logo.ico" type="image/x-icon">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="dashboard.css">
+  <link rel="stylesheet" href="denuncia-progresso.css">
+  <link rel="stylesheet" href="src/css/pagination.css">
+  <script src="src/js/uiHelpers.js"></script>
+  <script src="src/js/pagination.js"></script>
+  <script src="src/js/apiHelpers.js"></script>
+  <style>
+    .minhas-denuncias-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 100px 20px 40px 20px;
+    }
+
+    .minhas-denuncias-header {
+      margin-bottom: 30px;
+      padding-bottom: 20px;
+      border-bottom: 3px solid #7DB283;
+    }
+
+    .minhas-denuncias-header h1 {
+      color: #2c3e50;
+      font-size: 32px;
+      margin-bottom: 10px;
+    }
+
+    .filtros-section {
+      background: #f8f9fa;
+      padding: 20px;
+      border-radius: 8px;
+      margin-bottom: 30px;
+      display: flex;
+      gap: 15px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .filtro-group {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+
+    .filtro-group label {
+      font-weight: bold;
+      color: #2c3e50;
+      font-size: 14px;
+    }
+
+    .filtro-group select,
+    .filtro-group input {
+      padding: 8px 12px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      font-size: 14px;
+    }
+
+    .btn-filtro {
+      padding: 8px 16px;
+      background: #7DB283;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 14px;
+      align-self: flex-end;
+    }
+
+    .btn-filtro:hover {
+      background: #659c6b;
+    }
+
+    .btn-limpar {
+      padding: 8px 16px;
+      background: #95a5a6;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 14px;
+      align-self: flex-end;
+    }
+
+    .btn-limpar:hover {
+      background: #7f8c8d;
+    }
+
+    .denuncias-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 20px;
+      margin-bottom: 40px;
+    }
+
+    .denuncia-card {
+      background: white;
+      border: 1px solid #e0e0e0;
+      border-radius: 8px;
+      padding: 20px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      transition: box-shadow 0.3s;
+    }
+
+    .denuncia-card:hover {
+      box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+    }
+
+    .denuncia-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: start;
+      margin-bottom: 15px;
+      border-bottom: 1px solid #f0f0f0;
+      padding-bottom: 15px;
+    }
+
+    .denuncia-protocolo {
+      font-size: 18px;
+      font-weight: bold;
+      color: #2c3e50;
+    }
+
+    .denuncia-status {
+      display: inline-block;
+      padding: 6px 12px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: bold;
+      text-transform: uppercase;
+    }
+
+    .status-criada {
+      background: #3498db;
+      color: white;
+    }
+
+    .status-em_analise {
+      background: #f1c40f;
+      color: #2c3e50;
+    }
+
+    .status-em_investigacao {
+      background: #e67e22;
+      color: white;
+    }
+
+    .status-aguardando_inspecao {
+      background: #9b59b6;
+      color: white;
+    }
+
+    .status-resolvida {
+      background: #27ae60;
+      color: white;
+    }
+
+    .status-concluida {
+      background: #16a085;
+      color: white;
+    }
+
+    .denuncia-info {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 15px;
+      margin-bottom: 15px;
+    }
+
+    .info-item {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+
+    .info-label {
+      font-weight: bold;
+      color: #7f8c8d;
+      font-size: 12px;
+      text-transform: uppercase;
+    }
+
+    .info-value {
+      color: #2c3e50;
+      font-size: 14px;
+    }
+
+    .denuncia-progresso-container {
+      margin: 15px 0;
+    }
+
+    .denuncia-descricao {
+      background: #f8f9fa;
+      padding: 12px;
+      border-radius: 4px;
+      margin: 15px 0;
+      border-left: 4px solid #7DB283;
+    }
+
+    .denuncia-descricao strong {
+      display: block;
+      margin-bottom: 8px;
+      color: #2c3e50;
+    }
+
+    .denuncia-descricao p {
+      margin: 0;
+      color: #555;
+      line-height: 1.6;
+    }
+
+    .denuncia-acoes {
+      display: flex;
+      gap: 10px;
+      margin-top: 15px;
+      flex-wrap: wrap;
+    }
+
+    .btn-acao {
+      padding: 8px 16px;
+      background: #7DB283;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 13px;
+      transition: background 0.3s;
+    }
+
+    .btn-acao:hover {
+      background: #659c6b;
+    }
+
+    .btn-avaliar {
+      background: #27ae60;
+    }
+
+    .btn-avaliar:hover {
+      background: #229954;
+    }
+
+    .empty-state {
+      text-align: center;
+      padding: 60px 20px;
+      color: #7f8c8d;
+    }
+
+    .empty-state h2 {
+      color: #2c3e50;
+      margin-bottom: 10px;
+    }
+
+    .pagination-controls {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      margin: 30px 0;
+      flex-wrap: wrap;
+    }
+
+    .pagination-button {
+      background: #f8f9fa;
+      border: 1px solid #ddd;
+      padding: 8px 12px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 14px;
+    }
+
+    .pagination-button.active {
+      background: #7DB283;
+      color: white;
+      border-color: #7DB283;
+    }
+
+    .pagination-button:hover:not(:disabled) {
+      background: #ecf0f1;
+    }
+
+    .pagination-button:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+
+    .stats-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 15px;
+      margin-bottom: 30px;
+    }
+
+    .stat-card {
+      background: #f8f9fa;
+      padding: 20px;
+      border-radius: 8px;
+      text-align: center;
+      border-left: 4px solid #7DB283;
+    }
+
+    .stat-number {
+      font-size: 28px;
+      font-weight: bold;
+      color: #7DB283;
+    }
+
+    .stat-label {
+      color: #7f8c8d;
+      font-size: 13px;
+      margin-top: 8px;
+    }
+  </style>
+</head>
+<body>
+  <header class="cabecalho">
+    <a class="cabecalho__logo" href="dashboard.html">
+      <img src="src/images/logo.png" alt="Logo do Ani+Seguros" class="cabecalho__logo__imagem">
+      <span class="cabecalho__logo__texto">Ani <span class="titulo__mais">+</span> Seguros</span>
+    </a>
+    <nav class="cabecalho__menu">
+      <a href="dashboard.html" class="cabecalho__menu__link">Dashboard</a>
+      <a href="nova-denuncia.html" class="cabecalho__menu__link">Denunciar</a>
+      <a href="minhas-denuncias.html" class="cabecalho__menu__link ativo">Minhas Denúncias</a>
+      <a href="#" class="cabecalho__menu__botao" id="logoutBtn">Sair</a>
+    </nav>
+  </header>
+
+  <main class="minhas-denuncias-container">
+    <div class="minhas-denuncias-header">
+      <h1>Minhas Denúncias</h1>
+      <p>Acompanhe todas as suas denúncias e seu progresso</p>
+    </div>
+
+    <!-- Estatísticas -->
+    <div class="stats-container" id="statsContainer">
+      <div class="stat-card">
+        <div class="stat-number" id="totalDenuncias">0</div>
+        <div class="stat-label">Total de Denúncias</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number" id="denunciasAndamento">0</div>
+        <div class="stat-label">Em Andamento</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number" id="denunciasConcluidas">0</div>
+        <div class="stat-label">Concluídas</div>
+      </div>
+    </div>
+
+    <!-- Filtros -->
+    <div class="filtros-section">
+      <div class="filtro-group">
+        <label for="filtroStatus">Status:</label>
+        <select id="filtroStatus">
+          <option value="">Todos</option>
+          <option value="CRIADA">Criada</option>
+          <option value="EM_ANALISE">Em Análise</option>
+          <option value="EM_INVESTIGACAO">Em Investigação</option>
+          <option value="AGUARDANDO_INSPECAO">Aguardando Inspeção</option>
+          <option value="RESOLVIDA">Resolvida</option>
+          <option value="CONCLUIDA">Concluída</option>
+        </select>
+      </div>
+      <div class="filtro-group">
+        <label for="filtroTipo">Tipo:</label>
+        <select id="filtroTipo">
+          <option value="">Todos</option>
+          <option value="violencia_fisica">Violência Física</option>
+          <option value="negligencia">Negligência</option>
+          <option value="abandono">Abandono</option>
+          <option value="maus_tratos">Maus-tratos</option>
+          <option value="comercio_ilegal">Comércio Ilegal</option>
+          <option value="outro">Outros</option>
+        </select>
+      </div>
+      <button class="btn-filtro" id="btnFiltrar">Filtrar</button>
+      <button class="btn-limpar" id="btnLimpar">Limpar Filtros</button>
+    </div>
+
+    <!-- Lista de Denúncias -->
+    <div class="denuncias-grid" id="denunciasContainer">
+      <div class="empty-state">
+        <div class="spinner"></div>
+        <p>Carregando denúncias...</p>
+      </div>
+    </div>
+
+    <!-- Paginação -->
+    <div class="pagination-controls" id="paginationContainer"></div>
+  </main>
+
+  <footer class="rodape">
+    <div class="bloco-texto">
+      <p>Todos os Direitos Reservados a Ani + Seguros 2024 ©</p>
+    </div>
+  </footer>
+
+  <script src="statusConstantes.js"></script>
+  <script src="auth.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const denunciasContainer = document.getElementById('denunciasContainer');
+      const paginationContainer = document.getElementById('paginationContainer');
+      const filtroStatus = document.getElementById('filtroStatus');
+      const filtroTipo = document.getElementById('filtroTipo');
+      const btnFiltrar = document.getElementById('btnFiltrar');
+      const btnLimpar = document.getElementById('btnLimpar');
+
+      let allReports = [];
+      let currentPage = 1;
+      const itemsPerPage = 10;
+
+      // Funções auxiliares
+      function getStatusInfo(status) {
+        const statusMap = {
+          'CRIADA': { title: 'Criada', etapa: 1, cor: '#7DB283' },
+          'EM_ANALISE': { title: 'Em Análise', etapa: 2, cor: '#f1c40f' },
+          'EM_INVESTIGACAO': { title: 'Em Investigação', etapa: 3, cor: '#e67e22' },
+          'AGUARDANDO_INSPECAO': { title: 'Aguardando Inspeção', etapa: 4, cor: '#9b59b6' },
+          'RESOLVIDA': { title: 'Resolvida', etapa: 5, cor: '#27ae60' },
+          'CONCLUIDA': { title: 'Concluída', etapa: 6, cor: '#16a085' }
+        };
+        return statusMap[status] || { title: 'Desconhecido', etapa: 0 };
+      }
+
+      function formatarData(data) {
+        return new Date(data).toLocaleDateString('pt-BR', { 
+          day: '2-digit', 
+          month: '2-digit', 
+          year: 'numeric',
+          hour: '2-digit',
+          minute: '2-digit'
+        });
+      }
+
+      function getStatusClass(status) {
+        return `status-${status.toLowerCase()}`;
+      }
+
+      function renderDenuncias(reports) {
+        denunciasContainer.innerHTML = '';
+
+        if (reports.length === 0) {
+          denunciasContainer.innerHTML = `
+            <div class="empty-state">
+              <h2>Nenhuma denúncia encontrada</h2>
+              <p>Crie uma nova denúncia para começar!</p>
+            </div>
+          `;
+          paginationContainer.innerHTML = '';
+          return;
+        }
+
+        // Paginação
+        const totalPages = Math.ceil(reports.length / itemsPerPage);
+        const startIndex = (currentPage - 1) * itemsPerPage;
+        const endIndex = startIndex + itemsPerPage;
+        const pageReports = reports.slice(startIndex, endIndex);
+
+        // Renderizar cards
+        pageReports.forEach(report => {
+          const statusInfo = getStatusInfo(report.status);
+          const progressPercent = (statusInfo.etapa / 6) * 100;
+          const tipoDisplay = report.tipo ? report.tipo.replace(/_/g, ' ').charAt(0).toUpperCase() + report.tipo.replace(/_/g, ' ').slice(1) : 'N/A';
+
+          const card = document.createElement('div');
+          card.className = 'denuncia-card';
+          card.innerHTML = `
+            <div class="denuncia-header">
+              <span class="denuncia-protocolo">${report.protocolo}</span>
+              <span class="denuncia-status ${getStatusClass(report.status)}">${statusInfo.title}</span>
+            </div>
+
+            <div class="denuncia-info">
+              <div class="info-item">
+                <span class="info-label">Tipo</span>
+                <span class="info-value">${tipoDisplay}</span>
+              </div>
+              <div class="info-item">
+                <span class="info-label">Local</span>
+                <span class="info-value">${report.endereco || 'N/A'}, ${report.bairro || 'N/A'}</span>
+              </div>
+              <div class="info-item">
+                <span class="info-label">Espécie</span>
+                <span class="info-value">${report.especie || 'N/A'}</span>
+              </div>
+              <div class="info-item">
+                <span class="info-label">Data</span>
+                <span class="info-value">${formatarData(report.createdAt)}</span>
+              </div>
+            </div>
+
+            <div class="denuncia-progresso-container">
+              <div class="denuncia-progresso">
+                <div class="progresso-barra">
+                  <div class="progresso-preenchimento" style="width: ${progressPercent}%; background-color: ${statusInfo.cor};"></div>
+                </div>
+                <div class="progresso-etapa">Etapa ${statusInfo.etapa}/6</div>
+              </div>
+            </div>
+
+            ${report.descricao ? `
+              <div class="denuncia-descricao">
+                <strong>Descrição:</strong>
+                <p>${report.descricao.substring(0, 200)}${report.descricao.length > 200 ? '...' : ''}</p>
+              </div>
+            ` : ''}
+
+            <div class="denuncia-acoes">
+              ${report.status === 'CONCLUIDA' && !report.feedback ? `
+                <button class="btn-acao btn-avaliar" onclick="avaliarDenuncia('${report.id}')">Avaliar Denúncia</button>
+              ` : ''}
+              <button class="btn-acao" onclick="verDetalhes('${report.id}')">Ver Detalhes</button>
+            </div>
+          `;
+          denunciasContainer.appendChild(card);
+        });
+
+        // Paginação
+        renderPagination(totalPages);
+      }
+
+      function renderPagination(totalPages) {
+        paginationContainer.innerHTML = '';
+        
+        if (totalPages <= 1) return;
+
+        const prevBtn = document.createElement('button');
+        prevBtn.className = 'pagination-button';
+        prevBtn.textContent = '← Anterior';
+        prevBtn.disabled = currentPage === 1;
+        prevBtn.onclick = () => {
+          if (currentPage > 1) {
+            currentPage--;
+            loadAndRender();
+          }
+        };
+        paginationContainer.appendChild(prevBtn);
+
+        for (let i = 1; i <= Math.min(totalPages, 5); i++) {
+          const btn = document.createElement('button');
+          btn.className = `pagination-button ${i === currentPage ? 'active' : ''}`;
+          btn.textContent = i;
+          btn.onclick = () => {
+            currentPage = i;
+            loadAndRender();
+          };
+          paginationContainer.appendChild(btn);
+        }
+
+        if (totalPages > 5) {
+          const dots = document.createElement('span');
+          dots.className = 'pagination-dots';
+          dots.textContent = '...';
+          paginationContainer.appendChild(dots);
+        }
+
+        const nextBtn = document.createElement('button');
+        nextBtn.className = 'pagination-button';
+        nextBtn.textContent = 'Próximo →';
+        nextBtn.disabled = currentPage === totalPages;
+        nextBtn.onclick = () => {
+          if (currentPage < totalPages) {
+            currentPage++;
+            loadAndRender();
+          }
+        };
+        paginationContainer.appendChild(nextBtn);
+      }
+
+      function updateStats(reports) {
+        document.getElementById('totalDenuncias').textContent = reports.length;
+        document.getElementById('denunciasAndamento').textContent = reports.filter(r => r.etapa < 6).length;
+        document.getElementById('denunciasConcluidas').textContent = reports.filter(r => r.etapa === 6).length;
+      }
+
+      function loadAndRender() {
+        let filteredReports = [...allReports];
+
+        const statusFilter = filtroStatus.value;
+        const tipoFilter = filtroTipo.value;
+
+        if (statusFilter) {
+          filteredReports = filteredReports.filter(r => r.status === statusFilter);
+        }
+
+        if (tipoFilter) {
+          filteredReports = filteredReports.filter(r => r.tipo === tipoFilter);
+        }
+
+        currentPage = 1;
+        renderDenuncias(filteredReports);
+        updateStats(filteredReports);
+      }
+
+      async function loadReports() {
+        try {
+          const res = await fetch('/api/reports');
+          if (!res.ok) throw new Error('Erro ao carregar denúncias');
+          
+          const data = await res.json();
+          allReports = (data.reports || [])
+            .filter(r => r.createdBy === window.userId)
+            .sort((a, b) => new Date(b.createdAt || b.updatedAt) - new Date(a.createdAt || a.updatedAt));
+
+          loadAndRender();
+        } catch (err) {
+          console.error('Erro ao carregar denúncias:', err);
+          denunciasContainer.innerHTML = '<div class="empty-state"><h2>Erro ao carregar denúncias</h2><p>Tente recarregar a página.</p></div>';
+        }
+      }
+
+      // Event listeners
+      btnFiltrar.addEventListener('click', loadAndRender);
+      btnLimpar.addEventListener('click', () => {
+        filtroStatus.value = '';
+        filtroTipo.value = '';
+        loadAndRender();
+      });
+
+      // Carregar dados iniciais - Obtém o usuário atual primeiro
+      async function initialize() {
+        try {
+          const meRes = await fetch('/api/me');
+          if (!meRes.ok) {
+            window.location.href = 'login.html';
+            return;
+          }
+          const meData = await meRes.json();
+          window.userId = meData.user.id;
+          
+          // Depois carrega as denúncias
+          await loadReports();
+        } catch (err) {
+          console.error('Erro ao inicializar:', err);
+          window.location.href = 'login.html';
+        }
+      }
+
+      initialize();
+    });
+
+    function avaliarDenuncia(reportId) {
+      const feedback = prompt('Envie seu feedback sobre esta denúncia:');
+      if (!feedback || feedback.trim() === '') return;
+
+      fetch(`/api/reports/${reportId}/feedback`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ feedback: feedback.trim() })
+      }).then(res => {
+        if (res.ok) {
+          alert('Feedback enviado com sucesso!');
+          location.reload();
+        } else {
+          alert('Erro ao enviar feedback');
+        }
+      });
+    }
+
+    function verDetalhes(reportId) {
+      alert('Funcionalidade de detalhes em desenvolvimento. Protocolo: ' + reportId);
+      // Futuramente, pode redirecionar para uma página de detalhes
+    }
+  </script>
+</body>
+</html>

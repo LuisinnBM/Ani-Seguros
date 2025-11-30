@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ani+Seguros | Nova Denúncia</title>
+  <link rel="icon" href="src/images/logo.ico" type="image/x-icon">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="dashboard.css">
+  <link rel="stylesheet" href="denuncia.css">
+</head>
+<body>
+  <header class="cabecalho">
+    <a class="cabecalho__logo" href="dashboard.html">
+      <img src="src/images/logo.png" alt="Logo do Ani+Seguros" class="cabecalho__logo__imagem">
+      <span class="cabecalho__logo__texto">Ani <span class="titulo__mais">+</span> Seguros</span>
+    </a>
+    <nav class="cabecalho__menu">
+      <a href="dashboard.html" class="cabecalho__menu__link">Dashboard</a>
+      <a href="nova-denuncia.html" class="cabecalho__menu__link ativo">Nova Denúncia</a>
+      <a href="minhas-denuncias.html" class="cabecalho__menu__link">Minhas Denúncias</a>
+      <a href="#" class="cabecalho__menu__botao" id="logoutBtn">Sair</a>
+    </nav>
+  </header>
+
+  <section class="hero hero--dashboard">
+    <div class="hero__conteudo">
+      <h1 class="hero__titulo">Nova Denúncia</h1>
+      <p class="hero__subtitulo">Preencha as informações abaixo para registrar sua denúncia.</p>
+    </div>
+  </section>
+
+  <main class="denuncia">
+    <section class="denuncia__tipo">
+    <h2>Tipo de Maus-Tratos</h2>
+    <p>Escolha o tipo de maus-tratos que deseja denunciar.</p>
+    <select class="denuncia__select" required>
+        <option value="">Selecione...</option>
+        <option value="violencia_fisica">Violência Física</option>
+        <option value="negligencia">Negligência</option>
+        <option value="abandono">Abandono</option>
+        <option value="maus_tratos">Maus-tratos</option>
+        <option value="comercio_ilegal">Comércio Ilegal</option>
+        <option value="outro">Outros</option>
+    </select>
+    </section>
+
+    <section class="denuncia__info">
+      <p>
+        <strong>Atenção:</strong> Submeter uma denúncia de maus-tratos exige que ela seja baseada em fatos reais e dentro das situações previstas pela lei. Denúncias infundadas ou feitas de má-fé prejudicam a proteção animal e desviam recursos de casos legítimos.
+      </p>
+      <p>
+        Ao marcar a caixa abaixo, você confirma que leu e compreendeu a definição de maus-tratos conforme a legislação de Florianópolis e que sua denúncia se baseia em fatos reais de abuso ou negligência. Sua responsabilidade é essencial para uma ação eficaz das autoridades.
+      </p>
+      <p>
+        Denúncia falsa é crime. Pelo Código Penal brasileiro, acusar alguém falsamente ou relatar um crime inexistente são atos ilegais que podem trazer consequências graves.
+      </p>
+      <label class="denuncia__termos">
+        <input type="checkbox" required>
+        Estou ciente com os termos descritos acima.
+      </label>
+    </section>
+
+    <section class="denuncia__formulario">
+      <div class="progress-bar">
+        <div class="progress"></div>
+        <ul class="progress-steps">
+          <li class="active">Local</li>
+          <li>Animal</li>
+          <li>Evidências</li>
+          <li>Autor</li>
+        </ul>
+      </div>
+
+      <form id="denunciaForm">
+        <div class="form-step active">
+          <h3>Informações do Local</h3>
+          <div class="form-group">
+            <label for="endereco">Endereço completo *</label>
+            <input type="text" id="endereco" placeholder="Ex: Rua das Flores, 123" required>
+          </div>
+          <div class="form-group">
+            <label for="bairro">Bairro *</label>
+            <select id="bairro" required>
+              <option value="">Selecione o bairro</option>
+              <option value="abraao">Abraão</option>
+              <option value="agronomica">Agronômica</option>
+              <option value="armacao">Armação</option>
+              <option value="balneario">Balneário</option>
+              <option value="barra-da-lagoa">Barra da Lagoa</option>
+              <option value="bom-abrigo">Bom Abrigo</option>
+              <option value="cachoeira-do-bom-jesus">Cachoeira do Bom Jesus</option>
+              <option value="cacupe">Cacupé</option>
+              <option value="campeche">Campeche</option>
+              <option value="canasvieiras">Canasvieiras</option>
+              <option value="canto">Canto</option>
+              <option value="capoeiras">Capoeiras</option>
+              <option value="carianos">Carianos</option>
+              <option value="centro">Centro</option>
+              <option value="coqueiros">Coqueiros</option>
+              <option value="coloninha">Coloninha</option>
+              <option value="corrego-grande">Córrego Grande</option>
+              <option value="costeira-do-pirajubae">Costeira do Pirajubaé</option>
+              <option value="daniela">Daniela</option>
+              <option value="estreito">Estreito</option>
+              <option value="ingleses">Ingleses</option>
+              <option value="itacorubi">Itacorubi</option>
+              <option value="jardim-atlantico">Jardim Atlântico</option>
+              <option value="joao-paulo">João Paulo</option>
+              <option value="joaquina">Joaquina</option>
+              <option value="jose-mendes">José Mendes</option>
+              <option value="jurere">Jurerê</option>
+              <option value="jurere-internacional">Jurerê Internacional</option>
+              <option value="lagoa-da-conceicao">Lagoa da Conceição</option>
+              <option value="lagoa-pequena">Lagoa Pequena</option>
+              <option value="monte-cristo">Monte Cristo</option>
+              <option value="morro-das-pedras">Morro das Pedras</option>
+              <option value="pantanal">Pantanal</option>
+              <option value="pantano-do-sul">Pântano do Sul</option>
+              <option value="ponta-das-canas">Ponta das Canas</option>
+              <option value="praia-brava">Praia Brava</option>
+              <option value="praia-mole">Praia Mole</option>
+              <option value="ribeirao-da-ilha">Ribeirão da Ilha</option>
+              <option value="rio-tavares">Rio Tavares</option>
+              <option value="rio-vermelho">Rio Vermelho</option>
+              <option value="saco-dos-limoes">Saco dos Limões</option>
+              <option value="saco-grande">Saco Grande</option>
+              <option value="sambaqui">Sambaqui</option>
+              <option value="santa-monica">Santa Mônica</option>
+              <option value="santo-antonio-de-lisboa">Santo Antônio de Lisboa</option>
+              <option value="santinho">Santinho</option>
+              <option value="tapera">Tapera</option>
+              <option value="trindade">Trindade</option>
+              <option value="vargem-do-bom-jesus">Vargem do Bom Jesus</option>
+              <option value="vargem-grande">Vargem Grande</option>
+              <option value="vargem-pequena">Vargem Pequena</option>
+            </select>
+          </div>
+          <div class="form-buttons">
+            <button type="button" class="btn-proximo">Próximo</button>
+          </div>
+        </div>
+
+        <div class="form-step">
+          <h3>Informações do Animal</h3>
+          <div class="form-group">
+            <label for="especie">Espécie *</label>
+            <select id="especie" required>
+              <option value="">Selecione a espécie</option>
+              <option value="cao">Cão</option>
+              <option value="gato">Gato</option>
+              <option value="ave">Ave</option>
+              <option value="outros">Outros</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="condicao">Condição do animal *</label>
+            <select id="condicao" required>
+              <option value="">Condição do animal</option>
+              <option value="saudavel">Saudável</option>
+              <option value="ferido">Ferido</option>
+              <option value="desnutrido">Desnutrido</option>
+              <option value="em_risco">Em risco de vida</option>
+            </select>
+          </div>
+          <div class="form-buttons">
+            <button type="button" class="btn-voltar">Voltar</button>
+            <button type="button" class="btn-proximo">Próximo</button>
+          </div>
+        </div>
+
+        <div class="form-step">
+          <h3>Evidências</h3>
+          <div class="form-group">
+            <label for="file">Anexar arquivos (fotos, vídeos) *</label>
+            <input type="file" id="file" multiple required>
+          </div>
+          <div class="form-group">
+            <label for="descricao">Descrição adicional</label>
+            <textarea id="descricao" placeholder="Descreva o que está acontecendo"></textarea>
+          </div>
+          <div class="form-buttons">
+            <button type="button" class="btn-voltar">Voltar</button>
+            <button type="button" class="btn-proximo">Próximo</button>
+          </div>
+        </div>
+
+        <div class="form-step">
+          <h3>Informações sobre o Autor</h3>
+          <div class="form-group">
+            <label for="nome-suspeito">Nome do suspeito (opcional)</label>
+            <input type="text" id="nome-suspeito" placeholder="Se conhecido">
+          </div>
+          <div class="form-group">
+            <label for="outras-info">Outras informações relevantes (opcional)</label>
+            <input type="text" id="outras-info" placeholder="Ex: placa do carro, horário do ocorrido">
+          </div>
+          <div class="form-buttons">
+            <button type="button" class="btn-voltar">Voltar</button>
+            <button type="submit" class="btn-finalizar">Enviar Denúncia</button>
+          </div>
+        </div>
+
+        <div class="form-step" id="final-step">
+            <h3>Parabéns!</h3>
+            <p>Sua denúncia foi concluída com sucesso.</p>
+            <p>Número de protocolo: <strong>#2024-009</strong></p>
+            <a href="dashboard.html" class="card__botao">Voltar ao Dashboard</a>
+        </div>
+      </form>
+    </section>
+  </main>
+
+  <footer class="rodape">
+    <div class="bloco-texto">
+      <p>Todos os Direitos Reservados a Ani + Seguros 2024 ©</p>
+    </div>
+  </footer>
+
+  <script src="auth.js"></script>
+  <script src="validacao.js"></script>
+  <script src="denuncia.js"></script>
+</body>
+</html>

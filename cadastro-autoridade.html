@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cadastro Autoridade - Ani+Seguros</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="cabecalho">
+    <a class="cabecalho__logo" href="index.html">
+      <img src="src/images/logo.png" alt="Logo" class="cabecalho__logo__imagem">
+    </a>
+  </header>
+  <main class="login-cadastro">
+    <div class="login-cadastro__container">
+      <div class="login-cadastro__conteudo">
+        <h1 class="login-cadastro__titulo">Cadastro de Autoridade</h1>
+        <form id="cadAutoridadeForm" class="login-cadastro__form">
+          <input name="email" type="email" placeholder="E-mail institucional" class="login-cadastro__input" required>
+          <input name="password" type="password" placeholder="Senha" class="login-cadastro__input" required>
+          <input name="org" type="text" placeholder="Nome da instituição" class="login-cadastro__input">
+          <button type="submit" class="login-cadastro__botao">Cadastrar Autoridade</button>
+        </form>
+        <p class="login-cadastro__link">Já tem conta? <a href="login.html">Entrar</a></p>
+      </div>
+    </div>
+  </main>
+  <script src="cadastro.js"></script>
+</body>
+</html>

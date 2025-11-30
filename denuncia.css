@@ -1,0 +1,211 @@
+/* CSS Otimizado */
+.denuncia {
+  padding: 4rem 10%;
+  background-color: #f9f9f9;
+}
+
+.denuncia__tipo,
+.denuncia__info,
+.denuncia__formulario {
+  background: #fff;
+  padding: 2rem;
+  margin: 0 auto 2rem;
+  border-radius: 1rem;
+  box-shadow: 0 0.5rem 1.25rem rgba(0,0,0,0.1);
+  max-width: 800px;
+}
+
+.denuncia__tipo h2,
+.form-step h3 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  color: var(--cor-terciaria);
+}
+
+.form-group {
+  margin-bottom: 1.5rem; /* Espaçamento entre grupos de campos */
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+  color: #555;
+}
+
+.denuncia__select,
+.form-step input,
+.form-step select,
+.form-step textarea {
+  padding: 0.85rem;
+  border: 1px solid #ccc;
+  border-radius: 0.5rem;
+  width: 100%;
+  font-size: 1.05rem;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.denuncia__select:focus,
+.form-step input:focus,
+.form-step select:focus,
+.form-step textarea:focus {
+  outline: none;
+  border-color: var(--cor-secundaria);
+  box-shadow: 0 0 0 3px rgba(101, 156, 107, 0.2);
+}
+
+.denuncia__info {
+  background: #fff5f5;
+  border-left: 5px solid #e63946;
+  font-size: 1rem;
+  color: #333;
+}
+
+.denuncia__info p {
+  margin-bottom: 1rem; /* Usa margem em vez de <br> */
+}
+
+.denuncia__termos {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 1.5rem;
+  font-size: 1.0rem;
+}
+
+/* Barra de progresso */
+.progress-bar {
+  margin-bottom: 2rem;
+}
+
+.progress {
+  height: 8px;
+  background: var(--cor-secundaria);
+  width: 25%;
+  border-radius: 4px;
+  transition: width 0.4s ease;
+}
+
+.progress-steps {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1rem;
+  list-style: none;
+  padding: 0;
+}
+
+.progress-steps li {
+  flex: 1;
+  text-align: center;
+  font-size: 0.95rem;
+  color: #777;
+  position: relative;
+}
+
+.progress-steps li.active {
+  font-weight: 600;
+  color: var(--cor-terciaria);
+}
+
+/* Adicionando um círculo para o progresso */
+.progress-steps li::before {
+  content: '';
+  display: block;
+  width: 10px;
+  height: 10px;
+  background: #ccc;
+  border-radius: 50%;
+  margin: 0 auto 0.5rem;
+  transition: background-color 0.4s ease;
+}
+
+.progress-steps li.active::before {
+  background: var(--cor-secundaria);
+}
+
+/* Formulário em etapas */
+.form-step {
+  display: none;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.form-step.active {
+  display: flex;
+}
+
+.form-buttons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.form-buttons .btn-voltar {
+  order: 1; /* Botão voltar à esquerda */
+}
+
+.form-buttons .btn-proximo,
+.form-buttons .btn-finalizar {
+  order: 2; /* Botão próximo/enviar à direita */
+}
+
+.btn-proximo,
+.btn-voltar,
+.btn-finalizar {
+  background: var(--cor-secundaria);
+  color: var(--cor-primaria);
+  border: none;
+  padding: 0.85rem 2rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 600;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.btn-voltar {
+  background: #ccc;
+  color: #333;
+}
+
+.btn-proximo:hover,
+.btn-finalizar:hover {
+  background: #659c6b;
+  transform: translateY(-2px);
+}
+
+.btn-voltar:hover {
+  background: #bbb;
+}
+
+.btn-consultar-leis {
+  display: inline-block;
+  background-color: var(--cor-terciaria);
+  color: #fff;
+  padding: 0.5rem 1.5rem;
+  border-radius: 0.5rem;
+  text-decoration: none;
+  font-weight: 500;
+  margin-top: 0.5rem;
+  transition: background-color 0.3s ease;
+}
+
+.btn-consultar-leis:hover {
+  background-color: #0d47a1; /* Um tom mais escuro */
+}
+
+/* Disabled state for next buttons */
+.btn-proximo[disabled],
+.btn-proximo.disabled {
+  background: #e0e0e0;
+  color: #777;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.btn-proximo[disabled]:hover,
+.btn-proximo.disabled:hover {
+  background: #e0e0e0;
+  transform: none;
+}

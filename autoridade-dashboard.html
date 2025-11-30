@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ani+Seguros | Dashboard Autoridade</title>
+  <link rel="icon" href="src/images/logo.ico" type="image/x-icon">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="dashboard.css">
+  <link rel="stylesheet" href="denuncia-progresso.css">
+  <link rel="stylesheet" href="src/css/pagination.css">
+  <script src="src/js/uiHelpers.js"></script>
+  <script src="src/js/pagination.js"></script>
+  <script src="src/js/apiHelpers.js"></script>
+  <style>
+    /* Estilos para denúncias */
+    .card {
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      margin-bottom: 20px;
+    }
+    
+    .card__botao {
+      background: #7DB283;
+      color: white;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    
+    .card__botao:hover {
+      background: #659c6b;
+    }
+
+    .destaque {
+      color: #e74c3c;
+      font-weight: bold;
+    }
+
+    /* Estilos para paginação */
+    .pagination-controls {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      margin: 20px 0;
+    }
+
+    .pagination-button {
+      background: #f8f9fa;
+      border: 1px solid #ddd;
+      padding: 8px 12px;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .pagination-button.active {
+      background: #7DB283;
+      color: white;
+      border-color: #7DB283;
+    }
+
+    .pagination-dots {
+      padding: 8px;
+      color: #666;
+    }
+
+    /* Estilos para busca */
+    .search-controls {
+      margin-bottom: 20px;
+      display: flex;
+      gap: 10px;
+    }
+
+    .search-input,
+    .status-filter,
+    .sort-select {
+      padding: 8px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+    }
+
+    .search-input {
+      flex: 1;
+    }
+  </style>
+</head>
+<body>
+  <header class="cabecalho">
+    <a class="cabecalho__logo" href="autoridade-dashboard.html">
+      <img src="src/images/logo.png" alt="Logo do Ani+Seguros" class="cabecalho__logo__imagem">
+      <span class="cabecalho__logo__texto">Ani <span class="titulo__mais">+</span> Seguros</span>
+    </a>
+      <nav class="cabecalho__menu">
+      <a href="autoridade-dashboard.html" class="cabecalho__menu__link ativo">Dashboard</a>
+      <a href="historico-denuncias.html" class="cabecalho__menu__link">Histórico</a>
+      <a href="#" class="cabecalho__menu__botao" id="logoutBtn">Sair</a>
+    </nav>
+  </header>
+
+  <section class="hero hero--dashboard">
+    <div class="hero__conteudo">
+      <h1 class="hero__titulo">Bem-vindo, Autoridade!</h1>
+      <p class="hero__subtitulo">Gerencie as denúncias em andamento e ajude a proteger nossos animais</p>
+    </div>
+  </section>
+
+  <main class="dashboard">
+    <section class="dashboard__conteudo">
+      <!-- Coluna esquerda - Denúncias em Andamento -->
+      <div class="dashboard__coluna">
+        <h2>Minhas Denúncias em Andamento</h2>
+        <div id="denunciaAtual" class="denuncias-list">
+          <!-- Denúncias em andamento serão carregadas aqui -->
+        </div>
+      </div>
+
+      <!-- Coluna central - Histórico de Concluídas -->
+      <div class="dashboard__coluna">
+        <h2>Histórico - Denúncias Concluídas</h2>
+        <div id="denunciasConcluidas" class="denuncias-list">
+          <!-- Denúncias concluídas serão carregadas aqui -->
+        </div>
+      </div>
+
+      <!-- Coluna direita - Denúncias Disponíveis -->
+      <div class="dashboard__coluna">
+        <h2>Novas Denúncias Disponíveis</h2>
+        <!-- Controles de busca e filtragem -->
+        <div id="searchControlsContainer" class="search-section"></div>
+        
+        <!-- Lista de denúncias -->
+        <div id="denunciasDisponiveis" class="denuncias-list">
+          <!-- Denúncias disponíveis serão carregadas aqui -->
+          <div class="loading-placeholder">
+            <div class="spinner"></div>
+            <p>Carregando denúncias...</p>
+          </div>
+        </div>
+
+        <!-- Paginação -->
+        <div id="paginationControlsContainer" class="pagination-section"></div>
+      </div>
+
+      <!-- Modal de comentários -->
+      <div id="comentarioModal" class="modal" style="display: none;">
+        <div class="modal-content">
+          <span class="close">&times;</span>
+          <h3>Adicionar Comentário</h3>
+          <textarea id="comentarioTexto" rows="4" placeholder="Digite seu comentário aqui..."></textarea>
+          <button id="enviarComentario" class="card__botao">Enviar Comentário</button>
+        </div>
+      </div>
+
+      <style>
+        .denuncias-list {
+          max-height: 600px;
+          overflow-y: auto;
+          padding-right: 10px;
+        }
+
+        .loading-placeholder {
+          text-align: center;
+          padding: 20px;
+        }
+
+        .spinner {
+          border: 4px solid #f3f3f3;
+          border-top: 4px solid #7DB283;
+          border-radius: 50%;
+          width: 40px;
+          height: 40px;
+          animation: spin 1s linear infinite;
+          margin: 0 auto 10px;
+        }
+
+        @keyframes spin {
+          0% { transform: rotate(0deg); }
+          100% { transform: rotate(360deg); }
+        }
+
+        .modal {
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background: rgba(0,0,0,0.5);
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          z-index: 1000;
+        }
+
+        .modal-content {
+          background: white;
+          padding: 20px;
+          border-radius: 8px;
+          width: 90%;
+          max-width: 500px;
+          position: relative;
+        }
+
+        .close {
+          position: absolute;
+          right: 10px;
+          top: 10px;
+          font-size: 24px;
+          cursor: pointer;
+        }
+
+        #comentarioTexto {
+          width: 100%;
+          padding: 10px;
+          margin: 10px 0;
+          border: 1px solid #ddd;
+          border-radius: 4px;
+          resize: vertical;
+        }
+
+        /* Estilizando a barra de rolagem */
+        .denuncias-list::-webkit-scrollbar {
+          width: 8px;
+        }
+
+        .denuncias-list::-webkit-scrollbar-track {
+          background: #f1f1f1;
+          border-radius: 4px;
+        }
+
+        .denuncias-list::-webkit-scrollbar-thumb {
+          background: #888;
+          border-radius: 4px;
+        }
+
+        .denuncias-list::-webkit-scrollbar-thumb:hover {
+          background: #555;
+        }
+      </style>
+    </section>
+  </main>
+
+  <footer class="rodape">
+    <div class="bloco-texto">
+      <p>Todos os Direitos Reservados a Ani + Seguros 2024 ©</p>
+    </div>
+  </footer>
+
+  <script src="auth.js"></script>
+  <script src="statusConstantes.js"></script>
+  <script src="autoridade.js"></script>
+</body>
+</html>

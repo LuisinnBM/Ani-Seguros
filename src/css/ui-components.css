@@ -1,0 +1,147 @@
+/* Loading Overlay */
+.loading-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    z-index: 9999;
+}
+
+.loading-spinner {
+    width: 50px;
+    height: 50px;
+    border: 5px solid #f3f3f3;
+    border-top: 5px solid #3498db;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+.loading-text {
+    color: white;
+    margin-top: 15px;
+    font-size: 1.1em;
+}
+
+/* Notificações */
+.notification {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: 15px 25px;
+    border-radius: 5px;
+    background: #fff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 10000;
+    animation: slideIn 0.5s ease-out;
+}
+
+.notification--info {
+    background: #3498db;
+    color: white;
+}
+
+.notification--success {
+    background: #2ecc71;
+    color: white;
+}
+
+.notification--warning {
+    background: #f1c40f;
+    color: #2c3e50;
+}
+
+.notification--error {
+    background: #e74c3c;
+    color: white;
+}
+
+.notification--fade-out {
+    animation: fadeOut 0.5s ease-out forwards;
+}
+
+/* Animações */
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}
+
+/* Botões com estado de loading */
+.btn-loading {
+    position: relative;
+    pointer-events: none;
+    opacity: 0.7;
+}
+
+.btn-loading::after {
+    content: '';
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    top: 50%;
+    left: 50%;
+    margin-top: -8px;
+    margin-left: -8px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    border-top-color: #fff;
+    animation: spin 1s infinite linear;
+}
+
+/* Inputs com estado de erro */
+.input-error {
+    border-color: #e74c3c !important;
+}
+
+.error-message {
+    color: #e74c3c;
+    font-size: 0.9em;
+    margin-top: 5px;
+    display: block;
+}
+
+/* Tooltips para ajuda */
+.tooltip {
+    position: relative;
+    display: inline-block;
+}
+
+.tooltip:hover::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 8px;
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    border-radius: 4px;
+    font-size: 0.9em;
+    white-space: nowrap;
+    z-index: 1000;
+}
